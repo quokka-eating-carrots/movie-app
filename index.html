@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QUOKKA CINEMA</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" class="findMovieTitle">QUOKKA CINEMA 🎬</a>
+      <div class="findMovieTitle">궁금한 영화를 검색하고,</div>
+      <div class="findMovieTitle">정보를 확인하세요.</div>
+    </div>
+  </header>
+  <section class="search">
+    <div class="container">
+      <div class="material-symbols-outlined">search</div>
+      <input id="searchName" type="text" placeholder="제목을 입력해 주세요.">
+      <button class="btn-search">검색</button>
+    </div>
+  </section>
+  <section class="search-result">
+    <div class="movies">
+      WHAT IS YOUR FAVORITE MOVIE?
+    </div>
+    <div class="btn-more hidden">more!</div>
+  </section>
+  <footer>
+    <div class="copyright">
+      &copy; <span class="this-year"></span>
+      <a href="https://github.com/quokka-eating-carrots/movie-app">MinJeong</a>
+    </div>
+  </footer>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
