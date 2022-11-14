@@ -136,6 +136,7 @@ function renderDetail (detail) {
 
 // 검색 버튼 눌러서 영화 목록 출력
 btnEl.addEventListener('click', async (e) => {
+  store.page = 1
   const { movies, totalResults } = await getMovies(inputEl.value)
   if (inputEl.value === ''|| inputEl.value.toString().length < 4) {
     alert('검색어가 너무 짧습니다')
@@ -151,6 +152,7 @@ btnEl.addEventListener('click', async (e) => {
 // enter 눌러서 영화 목록 출력
 inputEl.addEventListener('keydown', async (e) => {
   if (e.key === 'Enter') {
+    store.page = 1
     const { movies, totalResults } = await getMovies(inputEl.value)
     if (inputEl.value === ''|| inputEl.value.toString().length < 4) {
       alert('검색어가 너무 짧습니다')
