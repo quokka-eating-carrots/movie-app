@@ -1,10 +1,12 @@
 import year from "./year.js"
 
-const moviesEl = document.querySelector('.movies')
+const moviesEl = document.createElement('div')
 const inputEl = document.querySelector('#searchName')
 const btnEl = document.querySelector('.btn-search')
-const btnMoreEl = document.querySelector('.btn-more')
 const resultEl = document.querySelector('.search-result')
+const btnMoreEl = document.createElement('div')
+btnMoreEl.innerText = 'more!'
+btnMoreEl.className = 'btn-more'
 
 let store = {
   page: 1
@@ -61,12 +63,17 @@ function renderMovies(movies) {
     moviesEl.append(aEl)
     aEl.append(el)
   }
+
+  resultEl.append(btnMoreEl)
 }
 
 // 디테일 렌더링
 function renderDetail (detail) {
-  moviesEl.innerHTML = ''
-  btnMoreEl.classList += ' hidden'
+  const containerEl = document.querySelector('.container')
+  const searchEl = document.querySelector('.search')
+  containerEl.style.visibility = 'visible'
+  searchEl.style.visibility = 'visible'
+  resultEl.innerHTML = '';
 
   const el = document.createElement('div');
   el.classList += 'detail';
@@ -135,9 +142,8 @@ btnEl.addEventListener('click', async (e) => {
   } else if (!movies) {
     alert('검색어를 다시 확인해 주세요')
   } else {
-    moviesEl.innerText = '';
+    moviesEl.innerHTML = '';
     moviesEl.style.height = '100%';
-    btnMoreEl.className = 'btn-more';
     renderMovies(movies)
   }
 })
@@ -151,9 +157,8 @@ inputEl.addEventListener('keydown', async (e) => {
     } else if (!movies) {
       alert('검색어를 다시 확인해 주세요')
     } else {
-      moviesEl.innerText = '';
+      moviesEl.innerHTML = '';
       moviesEl.style.height = '100%';
-      btnMoreEl.className = 'btn-more';
       renderMovies(movies)
     }
   }
@@ -170,12 +175,52 @@ btnMoreEl.addEventListener('click', async () => {
   }
 })
 
+// about 페이지
+function renderAbout () {
+  resultEl.innerHTML = '';
+  const el = document.createElement('div')
+  el.classList += 'about'
+  el.innerHTML = `
+  <div>About Me!</div>
+  <div>ovzip7@gmail.com</div>
+  <div>https://velog.io/@ovzip</div>
+  <div>어디로 튈지 모르는 개발자👽</div>
+  `
+  const containerEl = document.querySelector('.container')
+  const searchEl = document.querySelector('.search')
+  containerEl.style.visibility = 'hidden'
+  searchEl.style.visibility = 'hidden'
+
+  resultEl.append(el);
+}
+
+//라우팅
 window.addEventListener('hashchange', async () => {
   const routePath = location.hash;
 
   if (routePath.includes('#/detail/')) {
-    const id = location.hash.slice(9)
-    const detail = await getMoviesDetail(id)
-    renderDetail(detail)
+    const id = location.hash.slice(9);
+    const detail = await getMoviesDetail(id);
+    renderDetail(detail);
+  } else if (routePath === '#about') {
+    renderAbout();
+  } else if (routePath === '') {
+    initMain();
   }
 })
+
+// 메인 화면
+function initMain() {
+  const containerEl = document.querySelector('.container')
+  const searchEl = document.querySelector('.search')
+  containerEl.style.visibility = 'visible'
+  searchEl.style.visibility = 'visible'
+  resultEl.innerHTML = '';
+
+  resultEl.append(moviesEl)
+  moviesEl.className = 'movies'
+  moviesEl.innerText = `WHAT IS YOUR FAVORITE MOVIE?`
+  moviesEl.className = 'movies'
+}
+
+initMain();
