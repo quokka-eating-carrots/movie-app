@@ -47,7 +47,7 @@ async function getMoviesDetail(id) {
 function renderMovies(movies) {
   for (let movie of movies) {
     const el = document.createElement('div');
-    el.classList += 'movie';
+    el.className += 'movie';
 
     const aEl = document.createElement('a');
     aEl.href = `#/detail/${movie.imdbID}`
@@ -76,62 +76,62 @@ function renderDetail (detail) {
   resultEl.innerHTML = '';
 
   const el = document.createElement('div');
-  el.classList += 'detail';
+  el.className += 'detail';
 
   // 포스터
   const imgEl = document.createElement('img');
-  imgEl.classList += 'poster';
+  imgEl.className += 'poster';
   imgEl.src = detail.Poster === 'N/A'
   ? './image/clapperboard.png' : detail.Poster;
 
   // 설명 묶는 div
   const desEl = document.createElement('div');
-  desEl.classList += 'description'
+  desEl.className += 'description'
 
   // title
   const titleNameEl = document.createElement('div');
-  titleNameEl.classList += 'title--name'
+  titleNameEl.className += 'title--name'
   titleNameEl.textContent = 'TITLE';
   const titleEl = document.createElement('div');
-  titleEl.classList += 'title';
+  titleEl.className += 'title';
   titleEl.textContent = detail.Title;
 
   // released
   const releasedNameEl = document.createElement('div');
-  releasedNameEl.classList += 'released--name';
+  releasedNameEl.className += 'released--name';
   releasedNameEl.textContent = 'RELEASED'
   const releasedEl = document.createElement('div')
-  releasedEl.classList += 'released'
+  releasedEl.className += 'released'
   releasedEl.textContent = detail.Released;
   
   //genre
   const genreNameEl = document.createElement('div');
-  genreNameEl.classList += 'genre--name';
+  genreNameEl.className += 'genre--name';
   genreNameEl.textContent = 'GENRE'
   const genreEl = document.createElement('div');
-  genreEl.classList = 'genre';
+  genreEl.className += 'genre';
   genreEl.textContent = detail.Genre;
   
   // runtime
   const runtimeNameEl = document.createElement('div');
-  runtimeNameEl.classList += 'runtime--name';
+  runtimeNameEl.className += 'runtime--name';
   runtimeNameEl.textContent = 'RUNTIME'
   const runtimeEl = document.createElement('div')
-  runtimeEl.classList = 'runtime'
+  runtimeEl.className = 'runtime'
   runtimeEl.textContent = detail.Runtime;
   
   // plot
   const plotNameEl = document.createElement('div');
-  plotNameEl.classList += 'plot--name'
+  plotNameEl.className += 'plot--name'
   plotNameEl.textContent = 'PLOT'
   const plotEl = document.createElement('div');
-  plotEl.classList += 'plot';
+  plotEl.className += 'plot';
   plotEl.textContent = detail.Plot;
 
   desEl.append(titleNameEl, titleEl, releasedNameEl, releasedEl, genreNameEl, genreEl, runtimeNameEl, runtimeEl, plotNameEl, plotEl)
   el.append(imgEl, desEl)
   resultEl.append(el)
-  moviesEl.classList += ' hidden'
+  moviesEl.className += ' hidden'
 }
 
 // 검색 버튼 눌러서 영화 목록 출력
@@ -181,7 +181,7 @@ btnMoreEl.addEventListener('click', async () => {
 function renderAbout () {
   resultEl.innerHTML = '';
   const el = document.createElement('div')
-  el.classList += 'about'
+  el.className += 'about'
   el.innerHTML = `
   <div>About Me!</div>
   <div>ovzip7@gmail.com</div>
@@ -222,7 +222,6 @@ function initMain() {
   resultEl.append(moviesEl)
   moviesEl.className = 'movies'
   moviesEl.innerText = `WHAT IS YOUR FAVORITE MOVIE?`
-  moviesEl.className = 'movies'
 }
 
 initMain();
