@@ -3,6 +3,8 @@ import {
   inputEl,
   btnEl,
   resultEl,
+  typeEl,
+  yearsEl,
   btnMoreEl,
   store
 } from "./variable.js"
@@ -48,7 +50,7 @@ export function renderDetail (detail) {
 // more 버튼 누르면 페이지 추가
 export const morePage = btnMoreEl.addEventListener('click', async () => {
   store.page += 1
-  const movies = await getMovies(inputEl.value, store.page)
+  const movies = await getMovies(inputEl.value, typeEl.value, yearsEl.value, store.page)
   if (!movies) {
     alert('더 이상 정보가 없습니다')
   } else {
