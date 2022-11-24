@@ -51,7 +51,7 @@ export function renderDetail (detail) {
 export const morePage = btnMoreEl.addEventListener('click', async () => {
   store.page += 1
   const movies = await getMovies(inputEl.value, typeEl.value, yearsEl.value, store.page)
-  if (!movies) {
+  if (movies.Error) {
     alert('더 이상 정보가 없습니다')
   } else {
     renderMovies(movies)

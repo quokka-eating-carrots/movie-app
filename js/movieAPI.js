@@ -6,7 +6,7 @@ export const getMovies = async (title, type, year, page = 1) => {
     const { Search: movies } = json
     return movies
   } else {
-    const { Error } = json
+    const Error = json
     return Error
   }
 }

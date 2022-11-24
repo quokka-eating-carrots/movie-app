@@ -17,7 +17,7 @@ export const searchEventHandler = async (e) => {
   const movies = await getMovies(inputEl.value, typeEl.value, yearsEl.value)
   if (inputEl.value.toString().length < 4) {
     alert('검색어가 너무 짧습니다')
-  } else if (!movies) {
+  } else if (movies.Error) {
     alert('검색어를 다시 확인해 주세요')
   } else {
     moviesEl.innerHTML = '';
