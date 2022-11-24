@@ -44,7 +44,7 @@ a {
   justify-content: center;
   align-items: center;
   height: 50px;
-  width: 350px;
+  width: 500px;
   background-color: #F2F2EB;
   border-radius: 20px;
 }
@@ -65,6 +65,27 @@ a {
 
 .search .container input:focus {
   outline: none;
+}
+
+.search .container #type,
+.search .container #years {
+  width: 80px;
+  height: 30px;
+  font-family: 'Gowun Dodum', sans-serif;
+  font-size: 15px;
+  background-color: transparent;
+  border: transparent;
+}
+
+.search .container #type:focus,
+.search .container #years:focus {
+  outline: none;
+}
+
+.search .container #type option,
+.search .container #years option {
+  background-color: #9C5B36;
+  color: #fff;
 }
 
 .search .container .btn-search {
